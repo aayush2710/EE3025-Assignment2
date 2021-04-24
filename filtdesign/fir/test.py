@@ -1,10 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-#If using termux
-import subprocess
-import shlex
-#end if
-
 
 #THIS PROGRAM FINDS THE FIR COEFFICIENTS FOR A BANDPASS FILTER USING THE
 #KAISER WINDOW AND THE DESIGN SPECIFICATIONS
@@ -53,7 +48,7 @@ N = np.ceil((A-8)/(4.57*delomega))
 
 N = 100
 n = np.arange(-N,N+1)
-hlp = np.sin(n*omega_l)/(n*np.pi)
+hlp = np.divide(np.sin(n*omega_l),(n*np.pi),out=np.zeros_like(np.sin(n*omega_l)), where=n!=0)
 hlp[N] = omega_l/np.pi
 
 #The Bandpass filter

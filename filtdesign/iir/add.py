@@ -9,6 +9,6 @@ def add(X,Y):
     y_pad=np.append(np.zeros(m-n),Y)
     z=X+y_pad
   else:
-    x_pad=np.append(np.zeros(m-n),X)
+    x_pad=np.append(np.zeros(n-m),X)
     z=x_pad + Y
   return z

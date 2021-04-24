@@ -16,25 +16,21 @@ def lpbp(p,Omega0,B,Omega_p2):
     N = len(p);
     const = np.array([1,0,Omega0**2])
     v = const
-    if N > 2:
-        
-        for i in range(1,N) :
+    if N > 2:     
+        for i in range(1,N):
             M = len(v)
-            v(M-i) = v(M-i) + p(i+1)*B^i
-            if i < N-1 :
-                v = np.conv(const,v)
-   
-
-        den = v;
-
-    elif N==2 :
-
-        M = len(v);
-        v(M-1) = v(M-1) + p(N)*B;
-        den = v;
-        
-    else :
-        den = p;
+            v[M-i-1] = v[M-i-1]+(p[i]*B**i)
+            if i < N-1:
+                v = np.convolve(const,v)
+        den = v
+    
+    elif N==2:
+        M = len(v)
+        v[M-2] = v[M-2] + p[N-1]*B
+        den = v
+    
+    else:
+        den = p
 
    
 

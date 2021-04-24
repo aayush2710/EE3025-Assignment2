@@ -3,6 +3,7 @@ import math as mp
 
 Fs=48
 L=114
+pi = np.pi
 '''Constant used to get the normalized digital freqencies'''
 const = 2*pi/Fs;
 
